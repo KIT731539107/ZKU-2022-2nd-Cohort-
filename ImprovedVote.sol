@@ -47,16 +47,19 @@ contract Ballot {
     }
 
     address[] public totaladdress;
+    // The address array for storing all voter address
 
     // Give `voter` the right to vote on this ballot.
     // May only be called by `chairperson`.
     function giveRightToVote(address[] calldata _addresses) external {
         totaladdress = _addresses;
+        // store the input address in the totaladdress
         require(
             msg.sender == chairperson,
             "Only chairperson can give right to vote."
             );
         uint j = 0;
+        // start the while loop for giving the right to vote
         while (j < 10){
         require(
             !voters[totaladdress[j]].voted,
@@ -65,7 +68,7 @@ contract Ballot {
         require(voters[totaladdress[j]].weight == 0);
         voters[totaladdress[j]].weight = 1;
         j ++ ;}
-
+        // delete all stored value to prevent high gas fee
         for (j = 0; j< 10; j++){
             delete totaladdress[j];
         }
