@@ -1,0 +1,20 @@
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity >=0.7.0 <0.9.0;
+
+// Use solidity version 0.8.7
+
+contract UnsignedInteger{
+// state contract
+uint public unsigned;
+
+function storevalue(uint _unsigned) public{
+    unsigned = _unsigned;
+// Store value to unsigned
+}
+
+// Show stored value
+function retrieve() public view returns (uint){
+    return unsigned;
+}
+
+}
